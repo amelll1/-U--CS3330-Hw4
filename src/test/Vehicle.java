@@ -1,4 +1,4 @@
-package -U--CS3330-Hw4.src.test;
+package test;
 
 public class Vehicle {
     private String brand;
