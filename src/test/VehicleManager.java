@@ -67,7 +67,7 @@ public class VehicleManager {
 			return false;
 		}
 	}
-}
+
 
 //public void displayAllCarInformation() {
 //	
@@ -89,13 +89,26 @@ public class VehicleManager {
 //	
 //}
 //
-//public boolean removeVehicle(Vehicle vehicle) {
-//	
-//}
-//
-//public boolean addVehicle(Vehicle vehicle) {
-//	
-//}
+public boolean removeVehicle(Vehicle vehicle) {
+	if(vehicles.contains(vehicle)) {
+		vehicles.remove(vehicle);
+		if(vehicles.contains(vehicle)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	return false;
+}
+
+public boolean addVehicle(Vehicle vehicle) {
+	vehicles.add(vehicle);
+	if (vehicles.contains(vehicle)) {
+		return true;
+	} else {
+		return false;
+	}
+}
 //
 //public boolean saveVehicleList() {
 //	
@@ -118,5 +131,5 @@ public class VehicleManager {
 //}
 
 
-
+}
 
