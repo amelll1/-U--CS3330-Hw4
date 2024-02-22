@@ -37,6 +37,19 @@ public class Vehicle {
                 this.gasTankCapacity = gasTankCapacity;
                 this.startType = startType;
             }
+    public Vehicle(Vehicle otherVehicle) {
+    	this.brand = otherVehicle.getBrand();
+        this.make = otherVehicle.getMake();
+        this.modelYear = otherVehicle.getModelYear();
+        this.price = otherVehicle.getPrice();
+        this.color = otherVehicle.getColor();
+        this.fuelType = otherVehicle.getFuelType();
+        this.mileage = otherVehicle.getMileage();
+        this.mass = otherVehicle.getMass();
+        this.cylinders = otherVehicle.getCylinders();
+        this.gasTankCapacity = otherVehicle.getGasTankCapacity();
+        this.startType = otherVehicle.getStartType();
+    }
     // Getters
     public String getBrand() {
         return brand;
