@@ -68,3 +68,55 @@ public class VehicleManager {
 		}
 	}
 }
+
+//public void displayAllCarInformation() {
+//	
+//}
+//
+//public void displayAllTruckInformation() {
+//	
+//}
+//
+//public void displayAllSUVInformation() {
+//	
+//}
+//
+//public void displayAllMotorBikeInformation() {
+//	
+//}
+//
+//public void displayVehicleInformation(Vehicle v) {
+//	
+//}
+//
+//public boolean removeVehicle(Vehicle vehicle) {
+//	
+//}
+//
+//public boolean addVehicle(Vehicle vehicle) {
+//	
+//}
+//
+//public boolean saveVehicleList() {
+//	
+//}
+//
+//private boolean isVehicleType(Vehicle v, Class clazz) {
+//	
+//}
+//
+//public int getNumberOfVehiclesByType(Class clazz) {
+//	
+//}
+//
+//public Vehicle getVehicleWithHighestMaintenanceCost(double distance, double fuelPrice) {
+//	
+//}
+//
+//public Vehicle getVehicleWithLowestMaintenanceCost(double distance, double fuelPrice) {
+//	
+//}
+
+
+
+
