@@ -41,7 +41,6 @@ public class VehicleManager {
 				int cylinders = Integer.valueOf(arrData[9]);
 				double gastankcap = Double.valueOf(arrData[10]);
 				StartMechanism starttype = StartMechanism.valueOf(arrData[11]);
-				//Genre genre = Genre.valueOf(arrData[4]);
 				if (type.equals("Truck")) {
 					TruckVehicle typeVehicle = new TruckVehicle(model,make,modelyear,price,color,fueltype,mileage,mass,cylinders,gastankcap,starttype);
 					vehicles.add(typeVehicle);
