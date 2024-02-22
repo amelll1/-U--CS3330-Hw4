@@ -4,7 +4,7 @@ public class Vehicle {
     private String brand;
     private String make;
     private long modelYear;
-    private Double price;
+    private double price;
     private VehicleColor color;
     private FuelType fuelType;
     private double mileage;
