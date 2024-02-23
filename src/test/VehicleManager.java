@@ -96,11 +96,18 @@ public void displayAllTruckInformation() {
 	System.out.print("No trucks found");
 	
 }
-//
-//public void displayAllSUVInformation() {
-//	
-//}
-//
+
+public void displayAllSUVInformation() {
+	for(int i =0; i < vehicleList.size(); i++) {
+		if(vehicleList.get(i) instanceof SUVVehicle) {
+			System.out.print(vehicleList.get(i).calculateMaintenaceCost(distance)+ ",");
+			System.out.print(vehicleList.get(i).calculateFuelEfficiency(distance, fuelPrice) + ", ");
+			System.out.println(vehicleList.get(i).getStartType());
+			break;
+		}
+	}
+	System.out.print("No SUVs found");
+}
 //public void displayAllMotorBikeInformation() {
 //	
 //}
