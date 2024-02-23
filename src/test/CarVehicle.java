@@ -7,4 +7,14 @@ public class CarVehicle extends Vehicle {
 		super(brand,make,modelYear,price,color,fuelType,mileage,mass,cylinders,gasTankCapacity,startType);
 	}
 
+	@Override
+	public double calculateMaintenaceCost(double distance) {
+		return (distance * getMass() * (2023 - getModelYear()) * getCylinders() * 0.005);
+	}
+
+	@Override
+	public double calculateFuelEfficiency(double distance, double fuelPrice) {
+		return (getCylinders() * getGasTankCapacity() * (fuelPrice / distance) * 0.003);
+	}
+
 }

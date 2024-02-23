@@ -1,6 +1,6 @@
 package test;
 
-public class Vehicle {
+public abstract class Vehicle {
     private String brand;
     private String make;
     private long modelYear;
@@ -50,6 +50,9 @@ public class Vehicle {
         this.gasTankCapacity = otherVehicle.getGasTankCapacity();
         this.startType = otherVehicle.getStartType();
     }
+
+    public abstract double calculateMaintenaceCost(double distance);
+    public abstract double calculateFuelEfficiency(double distance, double fuelPrice);
     // Getters
     public String getBrand() {
         return brand;
