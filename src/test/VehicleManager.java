@@ -78,11 +78,22 @@ public void displayAllCarInformation() {
 			System.out.print(vehicleList.get(i).calculateMaintenaceCost(distance) + ", ");
 			System.out.print(vehicleList.get(i).calculateFuelEfficiency(distance, fuelPrice) + ", ");
 			System.out.println(vehicleList.get(i).getStartType());
+			break;
 		}
 	}
+	System.out.print("No cars found");
 }
 
 public void displayAllTruckInformation() {
+	for(int i =0; i < vehicleList.size(); i++) {
+		if(vehicleList.get(i) instanceof TruckVehicle) {
+			System.out.print(vehicleList.get(i).calculateMaintenaceCost(distance)+ ",");
+			System.out.print(vehicleList.get(i).calculateFuelEfficiency(distance, fuelPrice) + ", ");
+			System.out.println(vehicleList.get(i).getStartType());
+			break;
+		}
+	}
+	System.out.print("No trucks found");
 	
 }
 //
