@@ -126,6 +126,19 @@ public void displayVehicleInformation(Vehicle v) {
 	 System.out.print(v.calculateFuelEfficiency(distance, fuelPrice) + ", ");
 	 System.out.println(v.getStartType());
 }
+public void displayAllVehicleInformation() {
+    if(vehicleList.isEmpty()) {
+        System.out.println("No vehicles found");
+        return;
+    }
+    for (int i = 0; i < vehicleList.size(); i++) {
+        Vehicle vehicle = vehicleList.get(i);
+        System.out.print(vehicle.calculateMaintenaceCost(distance) + ",");
+        System.out.print(vehicle.calculateFuelEfficiency(distance, fuelPrice) + ", ");
+        System.out.println(vehicle.getStartType());
+    }
+}
+
 
 public boolean removeVehicle(Vehicle vehicle) {
 	if(vehicleList.contains(vehicle)) {
