@@ -53,6 +53,11 @@ public abstract class Vehicle {
 
     public abstract double calculateMaintenaceCost(double distance);
     public abstract double calculateFuelEfficiency(double distance, double fuelPrice);
+    
+    public String toString() {
+    	return ("Brand: "+brand+" Make: "+make+" Model Year: "+modelYear+" Price: "+price+" Color: "+color+" Fuel Type: "+ 
+    fuelType + " Mileage: "+mileage+" Mass: "+mass+" Cylinders: "+cylinders+" Gas Tank Capacity: "+ gasTankCapacity+" Start Type: "+ startType);
+    }
     // Getters
     public String getBrand() {
         return brand;
