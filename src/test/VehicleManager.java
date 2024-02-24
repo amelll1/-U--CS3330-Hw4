@@ -120,11 +120,13 @@ public void displayAllMotorBikeInformation() {
 	System.out.print("No motor bikes found");
 	
 }
-//
-//public void displayVehicleInformation(Vehicle v) {
-//	
-//}
-//
+
+public void displayVehicleInformation(Vehicle v) {
+	 System.out.print(v.calculateMaintenaceCost(distance) + ",");
+	 System.out.print(v.calculateFuelEfficiency(distance, fuelPrice) + ", ");
+	 System.out.println(v.getStartType());
+}
+
 public boolean removeVehicle(Vehicle vehicle) {
 	if(vehicleList.contains(vehicle)) {
 		vehicleList.remove(vehicle);
