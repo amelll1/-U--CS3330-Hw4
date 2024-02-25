@@ -175,10 +175,22 @@ public boolean addVehicle(Vehicle vehicle) {
 
 public boolean saveVehicleList() {
 	try (FileWriter writer = new FileWriter(vehicleFilePath)){
+		String headerLine = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n", "Type","Model","Make","ModelYear","Price","Color","FuelType","Mileage","Mass","Cylinders","GasTankCapacity","StartType");
+		writer.write(headerLine);
 		for (Vehicle vehicle : vehicleList) {
+			String vehicleType ="Error";
+			if (isVehicleType(vehicle,SUVVehicle.class)) {
+				vehicleType = "SUV";
+			} else if (isVehicleType(vehicle,CarVehicle.class)) {
+				vehicleType = "Car";
+			} else if (isVehicleType(vehicle,TruckVehicle.class)) {
+				vehicleType = "Truck";
+			} else if (isVehicleType(vehicle,MotorBikeVehicle.class)) {
+				vehicleType = "MotorBike";
+			}
 			String csvLine = String.format("%s,%s,%s,%d,%.2f,%s,%s,%.2f,%.2f,%d,%.2f,%s\n",
-			vehicle.getClass(),
-			vehicle.getMass(),
+			vehicleType,
+			vehicle.getBrand(),
 			vehicle.getMake(),
 			vehicle.getModelYear(),
 			vehicle.getPrice(),
