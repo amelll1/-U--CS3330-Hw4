@@ -2,7 +2,6 @@ package test;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -74,51 +73,63 @@ public class VehicleManager {
 
 
 public void displayAllCarInformation() {
+	int numVehicles = 0;
 	for(int i = 0; i < vehicleList.size(); i++) {
 		if(vehicleList.get(i) instanceof CarVehicle) {
+			numVehicles+=1;
 			System.out.print(vehicleList.get(i).calculateMaintenaceCost(distance) + ", ");
 			System.out.print(vehicleList.get(i).calculateFuelEfficiency(distance, fuelPrice) + ", ");
 			System.out.println(vehicleList.get(i).getStartType());
-			break;
 		}
 	}
-	System.out.print("No cars found");
+	if (numVehicles == 0) {
+		System.out.print("No cars found");
+	}
 }
 
 public void displayAllTruckInformation() {
+	int numVehicles = 0;
 	for(int i =0; i < vehicleList.size(); i++) {
 		if(vehicleList.get(i) instanceof TruckVehicle) {
+			numVehicles+=1;
 			System.out.print(vehicleList.get(i).calculateMaintenaceCost(distance)+ ",");
 			System.out.print(vehicleList.get(i).calculateFuelEfficiency(distance, fuelPrice) + ", ");
 			System.out.println(vehicleList.get(i).getStartType());
-			break;
 		}
 	}
-	System.out.print("No trucks found");
+	if (numVehicles == 0) {
+		System.out.print("No trucks found");
+	}
 	
 }
 
 public void displayAllSUVInformation() {
+	int numVehicles = 0;
 	for(int i =0; i < vehicleList.size(); i++) {
 		if(vehicleList.get(i) instanceof SUVVehicle) {
+			numVehicles+=1;
 			System.out.print(vehicleList.get(i).calculateMaintenaceCost(distance)+ ",");
 			System.out.print(vehicleList.get(i).calculateFuelEfficiency(distance, fuelPrice) + ", ");
 			System.out.println(vehicleList.get(i).getStartType());
-			break;
 		}
 	}
-	System.out.print("No SUVs found");
+	if (numVehicles == 0) {
+		System.out.print("No SUVs found");
+	}
 }
 public void displayAllMotorBikeInformation() {
+	int numVehicles = 0;
 	for(int i =0; i < vehicleList.size(); i++) {
 		if(vehicleList.get(i) instanceof MotorBikeVehicle) {
+			numVehicles+=1;
 			System.out.print(vehicleList.get(i).calculateMaintenaceCost(distance)+ ",");
 			System.out.print(vehicleList.get(i).calculateFuelEfficiency(distance, fuelPrice) + ", ");
 			System.out.println(vehicleList.get(i).getStartType());
-			break;
 		}
 	}
-	System.out.println("No motor bikes found");
+	if (numVehicles == 0) {
+		System.out.println("No motor bikes found");
+	}
 	
 }
 
@@ -274,6 +285,22 @@ public ArrayList<Vehicle> getVehicleWithLowestFuelEfficiency(double distance, do
 	return lowestMPGList;
 }
 
+public double getAverageFuelEfficiencyOfSUVs(double distance, double fuelPrice) {
+	int numSUV = 0;
+	double totalFuel = 0;
+	for (Vehicle v : vehicleList) {
+		if (isVehicleType(v,SUVVehicle.class)) {
+			double mpg = v.calculateFuelEfficiency(distance, fuelPrice);
+			numSUV+=1;
+			totalFuel+=mpg;
+		}
+	}
+	if (numSUV == 0) {
+		return(-1.0);
+	} else {
+		return(totalFuel/numSUV);
+	}
 }
 
+}
 
