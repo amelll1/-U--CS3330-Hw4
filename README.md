@@ -2,7 +2,7 @@
 
 
 Contributions:
- - Van Garbner:
+ - Van Grabner:
  - Mel Nezirovic:initial commit, set up the files, completed the display methods(displayAllTruckInformation,displayAllSUVInformation, displayAllMotorBikeInformation, displayVehicleInformation,displayAllVehicleInformation)
  - Temitope Alabi:
  - Micheal Whaley: Initial setup subclasses for Vehicle, intializeStock method, addVehicle method, removeVehicle method
