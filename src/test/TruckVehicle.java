@@ -12,7 +12,6 @@ public class TruckVehicle extends Vehicle {
 
 	@Override
 	public double calculateFuelEfficiency(double distance, double fuelPrice) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'calculateFuelEfficiency'");
+		return (getCylinders() * getGasTankCapacity() * (fuelPrice / distance) * 0.1);
 	}
 }

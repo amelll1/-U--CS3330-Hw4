@@ -9,13 +9,10 @@ public class SUVVehicle extends Vehicle {
 
 	@Override
 	public double calculateMaintenaceCost(double distance) {
-		return(distance * getMass() 
-		* (2023-getModelYear()) * 
-		getCylinders() * 0.001);
+		return(distance * getMass() * (2023-getModelYear()) * getCylinders() * 0.001);
 	}
 	@Override
 	public double calculateFuelEfficiency(double distance, double fuelPrice) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'calculateFuelEfficiency'");
+		return (getCylinders() * getGasTankCapacity() * (fuelPrice / distance) * 0.05);
 	}
 }

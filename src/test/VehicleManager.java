@@ -2,6 +2,7 @@ package test;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -17,6 +18,7 @@ public class VehicleManager {
 	private final static double fuelPrice = 3.25;
 	public int fcost = -1;
 	public int hcost = 1000000000;
+	public int fMPG = -1;
 	public VehicleManager(String filePath) {
 		vehicleFilePath = filePath;
 	}
@@ -59,10 +61,6 @@ public class VehicleManager {
 					MotorBikeVehicle typeVehicle = new MotorBikeVehicle(model,make,modelyear,price,color,fueltype,mileage,mass,cylinders,gastankcap,startType);
 					vehicleList.add(typeVehicle);
 				}
-				// } else {
-				// 	Vehicle vehicle = new Vehicle(model,make,modelyear,price,color,fueltype,mileage,mass,cylinders,gastankcap,startType);
-				// 	vehicleList.add(vehicle);
-				// }
 			}
 			vehicleManagerData.close();
 			sc.close();
@@ -120,7 +118,7 @@ public void displayAllMotorBikeInformation() {
 			break;
 		}
 	}
-	System.out.print("No motor bikes found");
+	System.out.println("No motor bikes found");
 	
 }
 
@@ -236,6 +234,44 @@ public Optional<Vehicle> getVehicleWithLowestMaintenanceCost(double distance, do
 	}
 }
 		return Optional.empty();
+}
+
+public ArrayList<Vehicle> getVehicleWithHighestFuelEfficiency(double distance, double fuelPrice) {
+	ArrayList<Vehicle> highestMPGList = new ArrayList<Vehicle>();
+	for (Vehicle v : vehicleList) {
+		double hMPG = 0.0;
+		double currentMPG = v.calculateFuelEfficiency(distance, fuelPrice);
+		if (currentMPG > hMPG) {
+			hMPG = currentMPG;
+			if (highestMPGList.isEmpty() || highestMPGList.get(0).calculateFuelEfficiency(distance, fuelPrice) == currentMPG){
+				highestMPGList.add(v);
+			} else {
+				highestMPGList.remove(0);
+				highestMPGList.add(v);
+			}
+		}
+	}
+	return highestMPGList;
+}
+
+public ArrayList<Vehicle> getVehicleWithLowestFuelEfficiency(double distance, double fuelPrice) {
+	ArrayList<Vehicle> lowestMPGList = new ArrayList<Vehicle>();
+	for (Vehicle v : vehicleList) {
+		double lMPG = 1000000;
+		double currentMPG = v.calculateFuelEfficiency(distance, fuelPrice);
+		if (currentMPG < lMPG) {
+			lMPG = currentMPG;
+			if (lowestMPGList.isEmpty()){
+				lowestMPGList.add(v);
+			} else if (lowestMPGList.get(0).calculateFuelEfficiency(distance, fuelPrice) == currentMPG) {
+				lowestMPGList.add(v);
+			} else {
+				lowestMPGList.remove(0);
+				lowestMPGList.add(v);
+			}
+		}
+	}
+	return lowestMPGList;
 }
 
 }
