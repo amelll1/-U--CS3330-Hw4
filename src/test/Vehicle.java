@@ -12,6 +12,7 @@ public abstract class Vehicle {
     private int cylinders;
     private double gasTankCapacity;
     private StartMechanism startType;
+    
 
     public enum VehicleColor {
         BLACK, RED, BLUE, BROWN, WHITE, YELLOW, GRAY

@@ -9,9 +9,7 @@ public class MotorBikeVehicle extends Vehicle{
 
 	@Override
 	public double calculateMaintenaceCost(double distance) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'calculateMaintenaceCost'");
-	}
+		return (distance * getMass() * (2023 - getModelYear()) * getCylinders() * 0.0002); }
 
 	@Override
 	public double calculateFuelEfficiency(double distance, double fuelPrice) {
