@@ -1,6 +1,6 @@
 package test;
-
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,12 +8,15 @@ import java.util.Scanner;
 import test.Vehicle.FuelType;
 import test.Vehicle.StartMechanism;
 import test.Vehicle.VehicleColor;
+import java.util.Optional;
 
 public class VehicleManager {
 	List<Vehicle> vehicleList = new ArrayList<Vehicle>();
 	private String vehicleFilePath;
 	private final static double distance = 300;
 	private final static double fuelPrice = 3.25;
+	public int fcost = -1;
+	public int hcost = 1000000000;
 	public VehicleManager(String filePath) {
 		vehicleFilePath = filePath;
 	}
@@ -160,27 +163,81 @@ public boolean addVehicle(Vehicle vehicle) {
 		return false;
 	}
 }
-//
-//public boolean saveVehicleList() {
-//	
-//}
-//
-//private boolean isVehicleType(Vehicle v, Class clazz) {
-//	
-//}
-//
-//public int getNumberOfVehiclesByType(Class clazz) {
-//	
-//}
-//
-//public Vehicle getVehicleWithHighestMaintenanceCost(double distance, double fuelPrice) {
-//	
-//}
-//
-//public Vehicle getVehicleWithLowestMaintenanceCost(double distance, double fuelPrice) {
-//	
-//}
 
+public boolean saveVehicleList() {
+	try (FileWriter writer = new FileWriter(vehicleFilePath)){
+		for (Vehicle vehicle : vehicleList) {
+			String csvLine = String.format("%s,%s,%s,%d,%.2f,%s,%s,%.2f,%.2f,%d,%.2f,%s\n",
+			vehicle.getClass(),
+			vehicle.getMass(),
+			vehicle.getMake(),
+			vehicle.getModelYear(),
+			vehicle.getPrice(),
+			vehicle.getColor(),
+			vehicle.getFuelType(),
+			vehicle.getMileage(),
+			vehicle.getMass(),
+			vehicle.getCylinders(),
+			vehicle.getGasTankCapacity(),
+			vehicle.getStartType());
+	writer.write(csvLine);
+}
+return true;
+} catch (IOException e) {
+return false; 
+}
+}
+
+private boolean isVehicleType(Vehicle v, Class<?> clazz) {
+	return v.getClass().equals(clazz);
+}
+public int getNumberOfVehiclesByType(Class<?> clazz) {
+	int total = 0;
+	for (Vehicle v : vehicleList) {
+		if(isVehicleType(v, clazz)) {
+			total++;
+		}
+	} return total;
+}
+
+public Optional<Vehicle> getVehicleWithHighestMaintenanceCost(double distance, double fuelPrice) {
+	for (Vehicle v : vehicleList) {
+        double findhicost = v.calculateMaintenaceCost(distance);
+		if (fcost > findhicost) {
+			findhicost = fcost;
+		}  
+        
+		}
+		for (Vehicle v : vehicleList) {
+            double findhicost = v.calculateMaintenaceCost(distance);
+            if (fcost == findhicost) {
+                System.out.println("This Vehicle has high cost of: " + v);
+				return Optional.of(v);
+	}
+}
+		return Optional.empty();
+		
+		
+}
+
+public Optional<Vehicle> getVehicleWithLowestMaintenanceCost(double distance, double fuelPrice) {
+	for (Vehicle v : vehicleList) {
+        double findlowcost = v.calculateMaintenaceCost(distance);
+		if (hcost < findlowcost) {
+			findlowcost = hcost;
+		}  
+        
+		}
+		for (Vehicle v : vehicleList) {
+            double findlowcost = v.calculateMaintenaceCost(distance);
+            if (fcost == findlowcost) {
+                System.out.println("This Vehicle has a low cost of: " + v);
+				return Optional.of(v);
+	}
+}
+		return Optional.empty();
+}
 
 }
+
 
