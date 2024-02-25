@@ -4,7 +4,7 @@
 Contributions:
  - Van Grabner:
  - Mel Nezirovic:initial commit, set up the files, completed the display methods(displayAllTruckInformation,displayAllSUVInformation, displayAllMotorBikeInformation, displayVehicleInformation,displayAllVehicleInformation)
- - Temitope Alabi:
+ - Temitope Alabi: Completed save, is and get maintenence costs for vehicles.
  - Micheal Whaley: Initial setup subclasses for Vehicle, intializeStock method, addVehicle method, removeVehicle method
 
 Instructions: 
