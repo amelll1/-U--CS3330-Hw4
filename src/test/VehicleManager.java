@@ -28,7 +28,7 @@ public class VehicleManager {
 			vehicleManagerData = new FileInputStream(vehicleFilePath);
 			Scanner sc = new Scanner(vehicleManagerData);
 			sc.nextLine();
-			while (sc.hasNext()) {
+			while (sc.hasNext()) { // loops through csv file until there isn't another line
 				String csvLine = sc.nextLine();
 				String[] arrData = csvLine.split(",");
 //				for (String a : arrData) {
@@ -47,7 +47,7 @@ public class VehicleManager {
 				int cylinders = Integer.valueOf(arrData[9]);
 				double gastankcap = Double.valueOf(arrData[10]);
 				StartMechanism startType = StartMechanism.valueOf(arrData[11]);
-				if (type.equals("Truck")) {
+				if (type.equals("Truck")) { // checking for subclass type if there isn't a subclass it doesn't add to the list
 					TruckVehicle typeVehicle = new TruckVehicle(model,make,modelyear,price,color,fueltype,mileage,mass,cylinders,gastankcap,startType);
 					vehicleList.add(typeVehicle);
 				} else if (type.equals("Car")) {
@@ -61,7 +61,7 @@ public class VehicleManager {
 					vehicleList.add(typeVehicle);
 				}
 			}
-			vehicleManagerData.close();
+			vehicleManagerData.close(); // no memory leaked closes everything
 			sc.close();
 			return true;
 		} catch (IOException e) {
@@ -74,7 +74,7 @@ public class VehicleManager {
 
 public void displayAllCarInformation() {
 	int numVehicles = 0;
-	for(int i = 0; i < vehicleList.size(); i++) {
+	for(int i = 0; i < vehicleList.size(); i++) { // loops through printing each vehicle of type
 		if(vehicleList.get(i) instanceof CarVehicle) {
 			numVehicles+=1;
 			System.out.print(vehicleList.get(i).calculateMaintenaceCost(distance) + ", ");
@@ -82,22 +82,22 @@ public void displayAllCarInformation() {
 			System.out.println(vehicleList.get(i).getStartType());
 		}
 	}
-	if (numVehicles == 0) {
+	if (numVehicles == 0) { // if theren't weren't any vehicles found
 		System.out.print("No cars found");
 	}
 }
 
 public void displayAllTruckInformation() {
 	int numVehicles = 0;
-	for(int i =0; i < vehicleList.size(); i++) {
-		if(vehicleList.get(i) instanceof TruckVehicle) {
+	for(int i =0; i < vehicleList.size(); i++) { // loops through printing each vehicle of type
+		if(vehicleList.get(i) instanceof TruckVehicle) { 
 			numVehicles+=1;
 			System.out.print(vehicleList.get(i).calculateMaintenaceCost(distance)+ ",");
 			System.out.print(vehicleList.get(i).calculateFuelEfficiency(distance, fuelPrice) + ", ");
 			System.out.println(vehicleList.get(i).getStartType());
 		}
 	}
-	if (numVehicles == 0) {
+	if (numVehicles == 0) { // if theren't weren't any vehicles found
 		System.out.print("No trucks found");
 	}
 	
@@ -105,7 +105,7 @@ public void displayAllTruckInformation() {
 
 public void displayAllSUVInformation() {
 	int numVehicles = 0;
-	for(int i =0; i < vehicleList.size(); i++) {
+	for(int i =0; i < vehicleList.size(); i++) { // loops through printing each vehicle of type
 		if(vehicleList.get(i) instanceof SUVVehicle) {
 			numVehicles+=1;
 			System.out.print(vehicleList.get(i).calculateMaintenaceCost(distance)+ ",");
@@ -113,13 +113,13 @@ public void displayAllSUVInformation() {
 			System.out.println(vehicleList.get(i).getStartType());
 		}
 	}
-	if (numVehicles == 0) {
+	if (numVehicles == 0) { // if theren't weren't any vehicles found
 		System.out.print("No SUVs found");
 	}
 }
 public void displayAllMotorBikeInformation() {
 	int numVehicles = 0;
-	for(int i =0; i < vehicleList.size(); i++) {
+	for(int i =0; i < vehicleList.size(); i++) { // loops through printing each vehicle of type
 		if(vehicleList.get(i) instanceof MotorBikeVehicle) {
 			numVehicles+=1;
 			System.out.print(vehicleList.get(i).calculateMaintenaceCost(distance)+ ",");
@@ -127,13 +127,13 @@ public void displayAllMotorBikeInformation() {
 			System.out.println(vehicleList.get(i).getStartType());
 		}
 	}
-	if (numVehicles == 0) {
+	if (numVehicles == 0) { // if theren't weren't any vehicles found
 		System.out.println("No motor bikes found");
 	}
 	
 }
 
-public void displayVehicleInformation(Vehicle v) {
+public void displayVehicleInformation(Vehicle v) { // displays info for specific vehicle
 	 System.out.print(v.calculateMaintenaceCost(distance) + ",");
 	 System.out.print(v.calculateFuelEfficiency(distance, fuelPrice) + ", ");
 	 System.out.println(v.getStartType());
@@ -143,7 +143,7 @@ public void displayAllVehicleInformation() {
         System.out.println("No vehicles found");
         return;
     }
-    for (int i = 0; i < vehicleList.size(); i++) {
+    for (int i = 0; i < vehicleList.size(); i++) { // loops through list printing all vehicle info
         Vehicle vehicle = vehicleList.get(i);
         System.out.print(vehicle.calculateMaintenaceCost(distance) + ",");
         System.out.print(vehicle.calculateFuelEfficiency(distance, fuelPrice) + ", ");
@@ -153,33 +153,33 @@ public void displayAllVehicleInformation() {
 
 
 public boolean removeVehicle(Vehicle vehicle) {
-	if(vehicleList.contains(vehicle)) {
-		vehicleList.remove(vehicle);
-		if(vehicleList.contains(vehicle)) {
-			return false;
+	if(vehicleList.contains(vehicle)) { // checks if vehicle is in list
+		vehicleList.remove(vehicle); // removes object
+		if(vehicleList.contains(vehicle)) { // checks if was successfully removed
+			return false; // failed
 		} else {
-			return true;
+			return true; // worked
 		}
 	}
-	return false;
+	return false; // failed
 }
 
 public boolean addVehicle(Vehicle vehicle) {
 	vehicleList.add(vehicle);
-	if (vehicleList.contains(vehicle)) {
-		return true;
+	if (vehicleList.contains(vehicle)) { // checks if vehicle was added to list
+		return true; // succeeded
 	} else {
-		return false;
+		return false; // failed
 	}
 }
 
 public boolean saveVehicleList() {
 	try (FileWriter writer = new FileWriter(vehicleFilePath)){
 		String headerLine = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n", "Type","Model","Make","ModelYear","Price","Color","FuelType","Mileage","Mass","Cylinders","GasTankCapacity","StartType");
-		writer.write(headerLine);
-		for (Vehicle vehicle : vehicleList) {
+		writer.write(headerLine); // saves the headers line
+		for (Vehicle vehicle : vehicleList) { // loops through adding each line of vehicles
 			String vehicleType ="Error";
-			if (isVehicleType(vehicle,SUVVehicle.class)) {
+			if (isVehicleType(vehicle,SUVVehicle.class)) { // class checker
 				vehicleType = "SUV";
 			} else if (isVehicleType(vehicle,CarVehicle.class)) {
 				vehicleType = "Car";
@@ -201,7 +201,7 @@ public boolean saveVehicleList() {
 			vehicle.getCylinders(),
 			vehicle.getGasTankCapacity(),
 			vehicle.getStartType());
-	writer.write(csvLine);
+	writer.write(csvLine); // writes all the information to next line
 }
 return true;
 } catch (IOException e) {
@@ -210,15 +210,15 @@ return false;
 }
 
 private boolean isVehicleType(Vehicle v, Class<?> clazz) {
-	return v.getClass().equals(clazz);
+	return v.getClass().equals(clazz); // checks if its the same class
 }
 public int getNumberOfVehiclesByType(Class<?> clazz) {
 	int total = 0;
-	for (Vehicle v : vehicleList) {
-		if(isVehicleType(v, clazz)) {
+	for (Vehicle v : vehicleList) { // loops through vehicle list
+		if(isVehicleType(v, clazz)) { // calls isVehicleType to check the class
 			total++;
 		}
-	} return total;
+	} return total; // returns total amount of vehicles with class
 }
 
 public Optional<Vehicle> getVehicleWithHighestMaintenanceCost(double distance, double fuelPrice) {
@@ -300,17 +300,17 @@ public ArrayList<Vehicle> getVehicleWithLowestFuelEfficiency(double distance, do
 public double getAverageFuelEfficiencyOfSUVs(double distance, double fuelPrice) {
 	int numSUV = 0;
 	double totalFuel = 0;
-	for (Vehicle v : vehicleList) {
+	for (Vehicle v : vehicleList) { // loops through list and calls isVehicleType to check if SUV
 		if (isVehicleType(v,SUVVehicle.class)) {
-			double mpg = v.calculateFuelEfficiency(distance, fuelPrice);
-			numSUV+=1;
-			totalFuel+=mpg;
+			double mpg = v.calculateFuelEfficiency(distance, fuelPrice); // calls method to calculate mpg
+			numSUV+=1; // adds to total SUVs
+			totalFuel+=mpg; // adds to mpg sum
 		}
 	}
-	if (numSUV == 0) {
+	if (numSUV == 0) { // no SUVs were found
 		return(-1.0);
 	} else {
-		return(totalFuel/numSUV);
+		return(totalFuel/numSUV); // total SUVs divided by fuel efficiency sum
 	}
 }
 
