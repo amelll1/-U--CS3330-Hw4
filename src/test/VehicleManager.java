@@ -222,16 +222,16 @@ public int getNumberOfVehiclesByType(Class<?> clazz) {
 }
 
 public Optional<Vehicle> getVehicleWithHighestMaintenanceCost(double distance, double fuelPrice) {
-	for (Vehicle v : vehicleList) {
-        double findhicost = v.calculateMaintenaceCost(distance);
+	for (Vehicle v : vehicleList) { //iterates through list
+        double findhicost = v.calculateMaintenaceCost(distance); // calculating maintenance cost
 		if (fcost > findhicost) {
-			findhicost = fcost;
+			findhicost = fcost; //sets found high cost to the cost found.
 		}  
         
 		}
 		for (Vehicle v : vehicleList) {
             double findhicost = v.calculateMaintenaceCost(distance);
-            if (fcost == findhicost) {
+            if (fcost == findhicost) { //compares equal costs and prints them out
                 System.out.println("This Vehicle has high cost of: " + v);
 				return Optional.of(v);
 	}
@@ -242,16 +242,16 @@ public Optional<Vehicle> getVehicleWithHighestMaintenanceCost(double distance, d
 }
 
 public Optional<Vehicle> getVehicleWithLowestMaintenanceCost(double distance, double fuelPrice) {
-	for (Vehicle v : vehicleList) {
-        double findlowcost = v.calculateMaintenaceCost(distance);
+	for (Vehicle v : vehicleList) { //iterates through list
+        double findlowcost = v.calculateMaintenaceCost(distance); //calculating maintenance cost
 		if (hcost < findlowcost) {
-			findlowcost = hcost;
+			findlowcost = hcost; //sets found low cost to the cost found
 		}  
         
 		}
 		for (Vehicle v : vehicleList) {
             double findlowcost = v.calculateMaintenaceCost(distance);
-            if (fcost == findlowcost) {
+            if (fcost == findlowcost) { //compares equal costs and prints them out
                 System.out.println("This Vehicle has a low cost of: " + v);
 				return Optional.of(v);
 	}
