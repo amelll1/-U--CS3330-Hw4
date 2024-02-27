@@ -2,7 +2,7 @@
 
 
 Contributions:
- - Van Grabner:
+ - Van Grabner: wrote original Vehicle class, constructor, and getters/setters. Added all abstract methods and began overwriting process. Wrote displayAllCarInformation. Added all fuel efficency methods.
  - Mel Nezirovic:initial commit, set up the files, completed the display methods(displayAllTruckInformation,displayAllSUVInformation, displayAllMotorBikeInformation, displayVehicleInformation,displayAllVehicleInformation)
  - Temitope Alabi: Completed save, is and get maintenence costs for vehicles.
  - Micheal Whaley: Initial setup subclasses for Vehicle, intializeStock method, addVehicle method, removeVehicle method, getAverageFuelEfficiencyOfSUVs method
