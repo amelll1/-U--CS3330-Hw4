@@ -14,13 +14,13 @@ public abstract class Vehicle {
     private StartMechanism startType;
     
 
-    public enum VehicleColor {
+    public enum VehicleColor { // color enums
         BLACK, RED, BLUE, BROWN, WHITE, YELLOW, GRAY
     }
-    public enum StartMechanism {
+    public enum StartMechanism { // start enums
         KEYSTART, PUSHSTART, KICKSTART
     }
-    public enum FuelType {
+    public enum FuelType { // fuel enums
         GASOLINE, DIESEL, ELECTRIC, HYBRID
     }
 

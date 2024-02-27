@@ -8,10 +8,10 @@ public class TruckVehicle extends Vehicle {
 
 	@Override
 	public double calculateMaintenaceCost(double distance) {
-		return (distance * getMass() * (2023 - getModelYear()) * getCylinders() * 0.002); }
+		return (distance * getMass() * (2023 - getModelYear()) * getCylinders() * 0.002); } // returns calculated cost
 
 	@Override
 	public double calculateFuelEfficiency(double distance, double fuelPrice) {
-		return (getCylinders() * getGasTankCapacity() * (fuelPrice / distance) * 0.1);
+		return (getCylinders() * getGasTankCapacity() * (fuelPrice / distance) * 0.1); // returns calculated fuel
 	}
 }

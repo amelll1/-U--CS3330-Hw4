@@ -9,10 +9,10 @@ public class MotorBikeVehicle extends Vehicle{
 
 	@Override
 	public double calculateMaintenaceCost(double distance) {
-		return (distance * getMass() * (2023 - getModelYear()) * getCylinders() * 0.0002); }
+		return (distance * getMass() * (2023 - getModelYear()) * getCylinders() * 0.0002); } // returns calculated cost
 
 	@Override
 	public double calculateFuelEfficiency(double distance, double fuelPrice) {
-		return (getCylinders() * getGasTankCapacity() * (fuelPrice / distance) * 0.001);
+		return (getCylinders() * getGasTankCapacity() * (fuelPrice / distance) * 0.001); // returns calculated fuel
 	}
 }

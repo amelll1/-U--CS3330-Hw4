@@ -9,12 +9,12 @@ public class CarVehicle extends Vehicle {
 
 	@Override
 	public double calculateMaintenaceCost(double distance) {
-		return (distance * getMass() * (2023 - getModelYear()) * getCylinders() * 0.005);
+		return (distance * getMass() * (2023 - getModelYear()) * getCylinders() * 0.005); // returns calculated cost
 	}
 
 	@Override
 	public double calculateFuelEfficiency(double distance, double fuelPrice) {
-		return (getCylinders() * getGasTankCapacity() * (fuelPrice / distance) * 0.003);
+		return (getCylinders() * getGasTankCapacity() * (fuelPrice / distance) * 0.003); // returns calculated fuel
 	}
 
 }
